@@ -36,20 +36,20 @@ public class MainActivity extends ActionBarActivity {
     private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
+            progressBar.setProgress(0);
             String response = "";
             for (String url : urls) {
+                progressBar.setProgress(30);
                 DefaultHttpClient client = new DefaultHttpClient();
                 HttpGet httpGet = new HttpGet(url);
                 try {
+                    progressBar.setProgress(50);
                     HttpResponse execute = client.execute(httpGet);
                     InputStream content = execute.getEntity().getContent();
-
                     BufferedReader buffer = new BufferedReader(new InputStreamReader(content));
                     String s = "";
-                    int i = 0;
                     while ((s = buffer.readLine()) != null) {
                         response += s;
-
                     }
 
                 } catch (Exception e) {
@@ -62,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            textView.setText(result);
+            textView01.setText(result);
         }
     }
 
@@ -74,7 +74,7 @@ public class MainActivity extends ActionBarActivity {
         textView.setText("Loading");
         textView.setText("Load");
         textView01.setText("Loading .........");
-        task.execute(new String[]{"http://bouleturripinoise.fr/"});
+        task.execute(new String[]{"https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&nojsoncallback=1&format=json&tags=furet&api_key=45074180ed9c766da6cdd745043f1cdc"});
 
     }
 

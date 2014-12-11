@@ -28,9 +28,7 @@
         android:layout_height="match_parent"
         android:text="@string/textView01"
         android:layout_below="@+id/readWebpage"
-        android:layout_alignParentEnd="true"
-        android:maxHeight="10dp"
-        android:maxLength="10">
+        android:layout_alignParentEnd="true">
     </TextView>
 
     <ProgressBar

@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/classes-65f8a11c448266e6399d7022b49e43551eb0b500.jar" />
-    </item>
-    <item
         jar="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
         <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-8db3723dfe8f0b5804398600aa3ff26967741b4d.jar" />
+    </item>
+    <item
+        jar="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/classes-65f8a11c448266e6399d7022b49e43551eb0b500.jar" />
     </item>
     <item
         jar="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
