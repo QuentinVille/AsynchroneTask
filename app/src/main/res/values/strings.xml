@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AsynchroneTask</string>
+    <string name="loader">Not load</string>
+    <string name="action_settings">Settings</string>
+    <string name="loaderButton">Load Webpage</string>
+    <string name="textView01">HTML Code</string>
+
+
+</resources>
