@@ -23,18 +23,18 @@
         <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/androidasync-2.0.2-25684f243e1b29e7be5a6a9fba4d4d2f70fd6ee2.jar" />
     </item>
     <item
-        jar="/Users/quentin/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3/5fc52c41ef0239d1093a1eb7c3697036183677ce/gson-2.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
-        <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/gson-2.3-d69c571e8c1be55a14d459860106632765202b6f.jar" />
-    </item>
-    <item
         jar="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
         <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/classes-65f8a11c448266e6399d7022b49e43551eb0b500.jar" />
+    </item>
+    <item
+        jar="/Users/quentin/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/gson-2.3.1-a299b7249268e557fcfb2d8ecd82b30787091b3e.jar" />
     </item>
     <item
         jar="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"

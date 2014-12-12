@@ -7,9 +7,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.koushikdutta.ion.Ion;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,8 +22,10 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends ActionBarActivity {
     private TextView textView;
-    private TextView textView01;
+    //private TextView textView01;
     private ProgressBar progressBar;
+    private String myUrlPhoto;
+    private ImageView imageView;
 
 
     @Override
@@ -29,8 +35,39 @@ public class MainActivity extends ActionBarActivity {
         //Ajout des composants
         textView = (TextView) findViewById(R.id.textView);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        textView01 = (TextView) findViewById(R.id.TextView01);
+        //textView01 = (TextView) findViewById(R.id.TextView01);
+        imageView = (ImageView) findViewById(R.id.TextView01);
 
+    }
+
+    private void createJSON() {
+        String jsonPhoto =
+                "{"
+                + "'id':'7258271356',"
+                + "'owner':'28991435@N02',"
+                + "'secret':'a65b777a5e',"
+                + "'server':'8156',"
+                + "'farm':9,"
+                + "'title':'Ferret Shlomo in the frozen bathtube, that was used as a rain barrell - 2005',"
+                + "'ispublic':1,"
+                + "'isfriend':0,"
+                + "'isfamily':0}";
+
+        // Now do the magic.
+        PhotoObject data = new Gson().fromJson(jsonPhoto, PhotoObject.class);
+
+        myUrlPhoto = "https://farm"+ data.getFarm() + ".staticflickr.com/" + data.getServer()+ "/"+data.getId()+"_"+data.getSecret()+".jpg/";
+
+        // Show it.
+//        Log.w("test", data.getId());
+//        Log.w("test", data.getOwner());
+//        Log.w("test", data.getSecret());
+//        Log.w("test", data.getServer());
+//        Log.w("test", String.valueOf(data.getFarm()));
+//        Log.w("test", data.getTitle());
+//        Log.w("test", String.valueOf(data.getIspublic()));
+//        Log.w("test", String.valueOf(data.getIsfriend()));
+//        Log.w("test", String.valueOf(data.getIsfamily()));
     }
 
     private String loadWebPage() throws ExecutionException, InterruptedException {
@@ -57,11 +94,19 @@ public class MainActivity extends ActionBarActivity {
     public void onClick(View view) throws InterruptedException, ExecutionException {
         progressBar.setProgress(0);
 
-        String fluxHttp = loadWebPage();
+        createJSON();
+        //String fluxHttp = loadWebPage();
         progressBar.setProgress(50);
-        textView01.setText(fluxHttp);
+        //textView01.setText(fluxHttp);
+
+        Ion.with(imageView)
+                //.placeholder(R.drawable.placeholder_image)
+                //.error(R.drawable.error_image)
+                .load(myUrlPhoto);
 
         progressBar.setProgress(100);
+
+
 
         //task.execute(new String[]{"https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&nojsoncallback=1&format=json&tags=furet&api_key=45074180ed9c766da6cdd745043f1cdc"});
 
