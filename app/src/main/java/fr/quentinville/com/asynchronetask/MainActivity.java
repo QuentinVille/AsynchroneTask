@@ -94,7 +94,7 @@ public class MainActivity extends ActionBarActivity {
                 .error(R.drawable.error_image)
                 .animateLoad(spinAnimation)
                 .animateIn(fadeInAnimation)
-                .load("http://bouleturripinoise.fr/wp-content/uploads/2014/12/Affiche-Matin%C3%A9e-D%C3%A9gustation-2015.jpg");
+                .load("http://developer.android.com/assets/images/dac_logo.png");
     }
 
     @Override
