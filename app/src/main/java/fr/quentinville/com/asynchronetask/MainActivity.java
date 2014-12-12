@@ -1,27 +1,20 @@
 package fr.quentinville.com.asynchronetask;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.koushikdutta.ion.Ion;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.ExecutionException;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -29,8 +22,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView textView01;
     private ProgressBar progressBar;
     private ImageView imageView;
-    private Animation spinAnimation;
-    private Animation fadeInAnimation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,63 +30,45 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         //Ajout des composants
         textView = (TextView) findViewById(R.id.textView);
-        //textView01 = (TextView) findViewById(R.id.TextView01);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        imageView = (ImageView) findViewById(R.id.TextView01);
+        textView01 = (TextView) findViewById(R.id.TextView01);
 
     }
 
-    private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... urls) {
-            progressBar.setProgress(0);
-            String response = "";
-            for (String url : urls) {
-                progressBar.setProgress(30);
-                DefaultHttpClient client = new DefaultHttpClient();
-                HttpGet httpGet = new HttpGet(url);
-                try {
-                    progressBar.setProgress(50);
-                    HttpResponse execute = client.execute(httpGet);
-                    InputStream content = execute.getEntity().getContent();
-                    BufferedReader buffer = new BufferedReader(new InputStreamReader(content));
-                    String s = "";
-                    while ((s = buffer.readLine()) != null) {
-                        response += s;
-                    }
+    private String loadWebPage() throws ExecutionException, InterruptedException {
+        HttpGetter httpGetter = new HttpGetter();
+        try {
+            URL url = new URL("https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&nojsoncallback=1&format=json&tags=furet&api_key=45074180ed9c766da6cdd745043f1cdc");
+            httpGetter.execute(url);
+            String s = httpGetter.get();
+            Log.w("s", s);
+        } catch (MalformedURLException e) {
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            progressBar.setProgress(100);
-            return response;
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+
+            e.printStackTrace();
         }
 
-        @Override
-        protected void onPostExecute(String result) {
-            textView01.setText(result);
-        }
+        return httpGetter.get();
     }
 
-    public void onClick(View view) throws InterruptedException {
+    public void onClick(View view) throws InterruptedException, ExecutionException {
         progressBar.setProgress(0);
 
-        // Chargement de la page web à partir de la tâche asynchrone
-        //DownloadWebPageTask task = new DownloadWebPageTask();
-        //textView.setText("Loading");
-        //textView.setText("Load");
-        //textView01.setText("Loading .........");
+        String fluxHttp = loadWebPage();
+        textView01.setText(fluxHttp);
+
+        progressBar.setProgress(100);
+
+
+
         //task.execute(new String[]{"https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&nojsoncallback=1&format=json&tags=furet&api_key=45074180ed9c766da6cdd745043f1cdc"});
 
 
-       // ION test with brevity, use the ImageView specific builder...
-        Ion.with(imageView)
-                .placeholder(R.drawable.placeholder_image)
-                .error(R.drawable.error_image)
-                .animateLoad(spinAnimation)
-                .animateIn(fadeInAnimation)
-                .load("http://developer.android.com/assets/images/dac_logo.png");
     }
 
     @Override
