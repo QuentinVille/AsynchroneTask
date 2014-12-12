@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +20,6 @@ public class MainActivity extends ActionBarActivity {
     private TextView textView;
     private TextView textView01;
     private ProgressBar progressBar;
-    private ImageView imageView;
 
 
     @Override
@@ -60,14 +58,12 @@ public class MainActivity extends ActionBarActivity {
         progressBar.setProgress(0);
 
         String fluxHttp = loadWebPage();
+        progressBar.setProgress(50);
         textView01.setText(fluxHttp);
 
         progressBar.setProgress(100);
 
-
-
         //task.execute(new String[]{"https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&nojsoncallback=1&format=json&tags=furet&api_key=45074180ed9c766da6cdd745043f1cdc"});
-
 
     }
 
@@ -95,9 +91,6 @@ public class MainActivity extends ActionBarActivity {
             toast.show();
             return true;
         }
-
-
-
         return super.onOptionsItemSelected(item);
     }
 }

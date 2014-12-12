@@ -1,7 +1,6 @@
 package fr.quentinville.com.asynchronetask;
 
-    import android.os.AsyncTask;
-
+import android.os.AsyncTask;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
