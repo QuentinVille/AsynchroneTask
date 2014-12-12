@@ -36,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
     private String loadWebPage() throws ExecutionException, InterruptedException {
         HttpGetter httpGetter = new HttpGetter();
         try {
-            URL url = new URL("https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&nojsoncallback=1&format=json&tags=furet&api_key=45074180ed9c766da6cdd745043f1cdc");
+            URL url = new URL("https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&nojsoncallback=1&format=json&tags=furet&api_key=6a931a15d733ce7b2294ccab06f5cfcd");
             httpGetter.execute(url);
             String s = httpGetter.get();
             Log.w("s", s);
