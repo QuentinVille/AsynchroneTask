@@ -11,25 +11,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:id="@+id/textView" />
-    <Button
-        android:id="@+id/readWebpage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="@string/loaderButton"
-        android:layout_marginTop="37dp"
-        android:layout_below="@+id/progressBar"
-        android:layout_alignParentStart="true">
-    </Button>
-
-    <TextView
-        android:id="@+id/TextView01"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/textView01"
-        android:layout_below="@+id/readWebpage"
-        android:layout_alignParentEnd="true">
-    </TextView>
 
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
@@ -40,5 +21,25 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
         android:layout_alignEnd="@+id/readWebpage" />
+
+    <Button
+        android:id="@+id/readWebpage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="@string/loaderButton"
+        android:layout_below="@+id/progressBar"
+        android:layout_alignParentStart="true">
+    </Button>
+
+    <ImageView
+        android:id="@+id/TextView01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/textView01"
+        android:layout_below="@+id/readWebpage"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="imageViewTextView01">
+    </ImageView>
 
 </RelativeLayout>

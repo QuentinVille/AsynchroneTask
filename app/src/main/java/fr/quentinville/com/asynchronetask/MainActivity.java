@@ -1,13 +1,19 @@
 package fr.quentinville.com.asynchronetask;
 
+import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.koushikdutta.ion.Ion;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -22,6 +28,9 @@ public class MainActivity extends ActionBarActivity {
     private TextView textView;
     private TextView textView01;
     private ProgressBar progressBar;
+    private ImageView imageView;
+    private Animation spinAnimation;
+    private Animation fadeInAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +38,10 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         //Ajout des composants
         textView = (TextView) findViewById(R.id.textView);
-        textView01 = (TextView) findViewById(R.id.TextView01);
+        //textView01 = (TextView) findViewById(R.id.TextView01);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        imageView = (ImageView) findViewById(R.id.TextView01);
+
     }
 
     private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
@@ -69,13 +80,21 @@ public class MainActivity extends ActionBarActivity {
     public void onClick(View view) throws InterruptedException {
         progressBar.setProgress(0);
 
-        // Chargement de la page web
-        DownloadWebPageTask task = new DownloadWebPageTask();
-        textView.setText("Loading");
-        textView.setText("Load");
-        textView01.setText("Loading .........");
-        task.execute(new String[]{"https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&nojsoncallback=1&format=json&tags=furet&api_key=45074180ed9c766da6cdd745043f1cdc"});
+        // Chargement de la page web à partir de la tâche asynchrone
+        //DownloadWebPageTask task = new DownloadWebPageTask();
+        //textView.setText("Loading");
+        //textView.setText("Load");
+        //textView01.setText("Loading .........");
+        //task.execute(new String[]{"https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&nojsoncallback=1&format=json&tags=furet&api_key=45074180ed9c766da6cdd745043f1cdc"});
 
+
+       // ION test with brevity, use the ImageView specific builder...
+        Ion.with(imageView)
+                .placeholder(R.drawable.placeholder_image)
+                .error(R.drawable.error_image)
+                .animateLoad(spinAnimation)
+                .animateIn(fadeInAnimation)
+                .load("http://bouleturripinoise.fr/wp-content/uploads/2014/12/Affiche-Matin%C3%A9e-D%C3%A9gustation-2015.jpg");
     }
 
     @Override
@@ -94,8 +113,16 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Context context = getApplicationContext();
+            CharSequence text = "Coucou :) !";
+            int duration = Toast.LENGTH_LONG;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
             return true;
         }
+
+
 
         return super.onOptionsItemSelected(item);
     }
