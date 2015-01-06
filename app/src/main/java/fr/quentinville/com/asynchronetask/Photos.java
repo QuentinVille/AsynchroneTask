@@ -1,38 +1,50 @@
 package fr.quentinville.com.asynchronetask;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by quentin on 12/12/2014.
  */
 public class Photos {
-        private int page;
-        private int pages;
-        private int perpage;
-        private String total;
-        private Collection<PhotoObject> collectionPhotoObjects;
+    public Integer page;
+    public Long pages;
+    public Integer perpage;
+    public String total;
+    // Collection de Photo
+    public List<Photo> photo;
 
-    public int getPage() {
+
+    public Photos(Integer page, Long pages, Integer perpage, String total,
+                  List<Photo> photo) {
+        super();
+        this.page = page;
+        this.pages = pages;
+        this.perpage = perpage;
+        this.total = total;
+        this.photo = photo;
+    }
+
+    public Integer getPage() {
         return page;
     }
 
-    public void setPage(int page) {
+    public void setPage(Integer page) {
         this.page = page;
     }
 
-    public int getPages() {
+    public Long getPages() {
         return pages;
     }
 
-    public void setPages(int pages) {
+    public void setPages(Long pages) {
         this.pages = pages;
     }
 
-    public int getPerpage() {
+    public Integer getPerpage() {
         return perpage;
     }
 
-    public void setPerpage(int perpage) {
+    public void setPerpage(Integer perpage) {
         this.perpage = perpage;
     }
 
@@ -44,11 +56,22 @@ public class Photos {
         this.total = total;
     }
 
-    public Collection<PhotoObject> getCollectionPhotoObjects() {
-        return collectionPhotoObjects;
+    public List<Photo> getPhoto() {
+        return photo;
     }
 
-    public void setCollectionPhotoObjects(Collection<PhotoObject> collectionPhotoObjects) {
-        this.collectionPhotoObjects = collectionPhotoObjects;
+    public void setPhoto(List<Photo> photo) {
+        this.photo = photo;
     }
+
+    @Override
+    public String toString() {
+        return "Photos [page=" + page + ", pages=" + pages + ", perpage="
+                + perpage + ", total=" + total + ", photo=" + photo + "]";
+    }
+
+
+
+
 }
+

@@ -21,32 +21,32 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 
-    /**
-     * La classe nous permettant de "lire" une URL.
-     * @author jub
-     *
-     *
-     * Exemple d'utilisation :
-     * </br>
-     * <code>
-     * HttpGetter httpGetter = new HttpGetter();</br>
-     *				try {</br>
-     *					URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=London,uk");</br>
-     *					httpGetter.execute(url);</br>
-     *					String s = httpGetter.get();</br>
-     *					Log.w("s",s);</br>
-     *				} catch (MalformedURLException e) {</br>
-     *
-     *					e.printStackTrace();</br>
-     *				} catch (InterruptedException e) {</br>
-     *
-     *					e.printStackTrace();</br>
-     *				} catch (ExecutionException e) {</br>
-     *
-     *					e.printStackTrace();</br>
-     *				}</br>
-     *</code>
-     */
+//    /**
+//     * La classe nous permettant de "lire" une URL.
+//     * @author jub
+//     *
+//     *
+//     * Exemple d'utilisation :
+//     * </br>
+//     * <code>
+//     * HttpGetter httpGetter = new HttpGetter();</br>
+//     *				try {</br>
+//     *					URL url = new URL("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a931a15d733ce7b2294ccab06f5cfcd&text=lapin&format=json&nojsoncallback=1");</br>
+//     *					httpGetter.execute(url);</br>
+//     *					String s = httpGetter.get();</br>
+//     *					Log.w("s",s);</br>
+//     *				} catch (MalformedURLException e) {</br>
+//     *
+//     *					e.printStackTrace();</br>
+//     *				} catch (InterruptedException e) {</br>
+//     *
+//     *					e.printStackTrace();</br>
+//     *				} catch (ExecutionException e) {</br>
+//     *
+//     *					e.printStackTrace();</br>
+//     *				}</br>
+//     *</code>
+//     */
 
 /**
  * Created by quentin on 12/12/2014.
