@@ -109,7 +109,7 @@ public class Photo {
             this.isFamily = isFamily;
             }
 
-    public String imgUrl()
+    public String imageUrl()
             {
             String res = "https://farm"+this.getFarm()+".staticflickr.com/"+this.getServer()+"/"+this.getId()+"_"+this.getSecret()+".jpg";
             return res;

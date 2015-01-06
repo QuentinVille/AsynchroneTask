@@ -26,8 +26,8 @@ public class MainActivity extends ActionBarActivity {
     private String myUrlPhoto;
     private ImageView imageView;
     private EditText editText;
-    private Gson gsonUtil = new Gson();
-    public String maString;
+    private Gson gsonData = new Gson();
+    public String search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +41,10 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    private String loadResponse() throws ExecutionException, InterruptedException {
+    private String loadResponse(String searchText) throws ExecutionException, InterruptedException {
         HttpGetter httpGetter = new HttpGetter();
         try {
-            URL url = new URL("https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&nojsoncallback=1&format=json&tags=lapin&api_key=6a931a15d733ce7b2294ccab06f5cfcd");
+            URL url = new URL("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a931a15d733ce7b2294ccab06f5cfcd&text="+searchText+"&format=json&nojsoncallback=1");
             httpGetter.execute(url);
             String s = httpGetter.get();
             // Log.w("s", s);
@@ -69,33 +69,20 @@ public class MainActivity extends ActionBarActivity {
         progressBar.setProgress(0);
         progressBar.setProgress(50);
 
+        if (editText.getText().toString().isEmpty()) {
+            search = loadResponse("bonbons");
+        }
+        else {
+            search = loadResponse(editText.getText().toString().replace(" ","%20"));
+        }
 
-        maString = "{"
-                + "\"photos\":"
-                + "{\"page\":1,"
-                + "\"pages\":4318,"
-                + "\"perpage\":1,"
-                + "\"total\":\"4318\","
-                + "\"photo\":"
-                + 	"[{\"id\":\"16198687221\","
-                + 	"\"owner\":\"30404142@N06\","
-                + 	"\"secret\":\"2b986ecaf4\","
-                + 	"\"server\":\"7531\","
-                + 	"\"farm\":8,"
-                + 	"\"title\":\"lilly's territory\","
-                + 	"\"ispublic\":1,"
-                + 	"\"isfriend\":0,"
-                + 	"\"isfamily\":0}]"
-                + "},"
-                + "\"stat\":\"ok\"}";
-
-        Response data = gsonUtil.fromJson(maString, Response.class);
-
-        textView.setText(data.toString());
+        Response data = gsonData.fromJson(search, Response.class);
 
         Picasso.with(context)
-                .load(data.getPhotos().getPhoto().get(0).imgUrl())
+                .load(data.getPhotos().getPhoto().get(0).imageUrl())
                 .into(imageView);
+
+        textView.setText("load");
 
         progressBar.setProgress(100);
     }
