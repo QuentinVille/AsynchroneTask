@@ -3,7 +3,6 @@ package fr.quentinville.com.asynchronetask;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,10 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.koushikdutta.ion.Ion;
+import com.squareup.picasso.Picasso;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 
@@ -32,11 +29,10 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Ajout des composants
+        //Ajout des composants de l'interface
         textView = (TextView) findViewById(R.id.textView);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        //textView01 = (TextView) findViewById(R.id.TextView01);
-        imageView = (ImageView) findViewById(R.id.TextView01);
+        imageView = (ImageView) findViewById(R.id.ImageView01);
 
     }
 
@@ -58,7 +54,7 @@ public class MainActivity extends ActionBarActivity {
 
         myUrlPhoto = "https://farm"+ data.getFarm() + ".staticflickr.com/" + data.getServer()+ "/"+data.getId()+"_"+data.getSecret()+".jpg/";
 
-        // Show it.
+//        Show it.
 //        Log.w("test", data.getId());
 //        Log.w("test", data.getOwner());
 //        Log.w("test", data.getSecret());
@@ -70,46 +66,19 @@ public class MainActivity extends ActionBarActivity {
 //        Log.w("test", String.valueOf(data.getIsfamily()));
     }
 
-    private String loadWebPage() throws ExecutionException, InterruptedException {
-        HttpGetter httpGetter = new HttpGetter();
-        try {
-            URL url = new URL("https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&nojsoncallback=1&format=json&tags=furet&api_key=6a931a15d733ce7b2294ccab06f5cfcd");
-            httpGetter.execute(url);
-            String s = httpGetter.get();
-            Log.w("s", s);
-        } catch (MalformedURLException e) {
-
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-
-            e.printStackTrace();
-        }
-
-        return httpGetter.get();
-    }
-
     public void onClick(View view) throws InterruptedException, ExecutionException {
+        Context context = getApplicationContext();
+
         progressBar.setProgress(0);
 
         createJSON();
-        //String fluxHttp = loadWebPage();
         progressBar.setProgress(50);
-        //textView01.setText(fluxHttp);
 
-        Ion.with(imageView)
-                //.placeholder(R.drawable.placeholder_image)
-                //.error(R.drawable.error_image)
-                .load(myUrlPhoto);
+        Picasso.with(context)
+                .load(myUrlPhoto)
+                .into(imageView);
 
         progressBar.setProgress(100);
-
-
-
-        //task.execute(new String[]{"https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&nojsoncallback=1&format=json&tags=furet&api_key=45074180ed9c766da6cdd745043f1cdc"});
-
     }
 
     @Override

@@ -33,13 +33,13 @@
     </Button>
 
     <ImageView
-        android:id="@+id/TextView01"
+        android:id="@+id/ImageView01"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/textView01"
         android:layout_below="@+id/readWebpage"
         android:layout_alignParentEnd="true"
-        android:contentDescription="imageViewTextView01">
+        android:contentDescription="ImageView01">
     </ImageView>
 
 </RelativeLayout>

@@ -9,18 +9,18 @@
         <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-8db3723dfe8f0b5804398600aa3ff26967741b4d.jar" />
     </item>
     <item
-        jar="/Users/quentin/.gradle/caches/modules-2/files-2.1/com.koushikdutta.ion/ion/2.0.2/5c006951f0969f6a5b118cc298b0c5d68abd4c90/ion-2.0.2.jar"
+        jar="/Users/quentin/.gradle/caches/modules-2/files-2.1/com.koushikdutta.async/androidasync/2.0.4/1e09d2918d67db8a72f61e52439e97d57415e9e3/androidasync-2.0.4.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="5c006951f0969f6a5b118cc298b0c5d68abd4c90">
-        <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/ion-2.0.2-a4322e8b6e65c3e761164d70c73431c1a03d82af.jar" />
+        sha1="1e09d2918d67db8a72f61e52439e97d57415e9e3">
+        <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/androidasync-2.0.4-a29b38b4cabc86a4daa86c5024e40d1255ff206e.jar" />
     </item>
     <item
-        jar="/Users/quentin/.gradle/caches/modules-2/files-2.1/com.koushikdutta.async/androidasync/2.0.2/26b4453f50ad599a758ef3f8e19d1ec6a19f533e/androidasync-2.0.2.jar"
+        jar="/Users/quentin/.gradle/caches/modules-2/files-2.1/com.koushikdutta.ion/ion/2.0.4/506266412f55e294192ee02058cc3bed775c658/ion-2.0.4.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="26b4453f50ad599a758ef3f8e19d1ec6a19f533e">
-        <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/androidasync-2.0.2-25684f243e1b29e7be5a6a9fba4d4d2f70fd6ee2.jar" />
+        sha1="0506266412f55e294192ee02058cc3bed775c658">
+        <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/ion-2.0.4-f3bdf54bb7273709e28079a8bb85fde312060bae.jar" />
     </item>
     <item
         jar="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
@@ -49,6 +49,13 @@
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
         <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-73e7770f9516332f37c78108e05005af054c959b.jar" />
+    </item>
+    <item
+        jar="/Users/quentin/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.4.0/f36d2d4e3a36b3259aaf9d004d29b4cdc6c1bfb2/picasso-2.4.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f36d2d4e3a36b3259aaf9d004d29b4cdc6c1bfb2">
+        <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/picasso-2.4.0-dcf4a5818a21dd1770cc8dfa350f7275cb60bffa.jar" />
     </item>
 
 </items>

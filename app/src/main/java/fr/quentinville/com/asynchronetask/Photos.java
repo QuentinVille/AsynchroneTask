@@ -1,6 +1,6 @@
 package fr.quentinville.com.asynchronetask;
 
-import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by quentin on 12/12/2014.
@@ -10,7 +10,7 @@ public class Photos {
         private int pages;
         private int perpage;
         private String total;
-        private ArrayList<PhotoObject> arrayPhotoObjects;
+        private Collection<PhotoObject> collectionPhotoObjects;
 
     public int getPage() {
         return page;
@@ -44,11 +44,11 @@ public class Photos {
         this.total = total;
     }
 
-    public ArrayList<PhotoObject> getArrayPhotoObjects() {
-        return arrayPhotoObjects;
+    public Collection<PhotoObject> getCollectionPhotoObjects() {
+        return collectionPhotoObjects;
     }
 
-    public void setArrayPhotoObjects(ArrayList<PhotoObject> arrayPhotoObjects) {
-        this.arrayPhotoObjects = arrayPhotoObjects;
+    public void setCollectionPhotoObjects(Collection<PhotoObject> collectionPhotoObjects) {
+        this.collectionPhotoObjects = collectionPhotoObjects;
     }
 }
