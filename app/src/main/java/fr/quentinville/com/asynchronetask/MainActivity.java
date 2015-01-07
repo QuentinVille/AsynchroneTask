@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.squareup.picasso.Picasso;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -36,9 +35,7 @@ public class MainActivity extends ActionBarActivity {
         //Ajout des composants de l'interface
         textView = (TextView) findViewById(R.id.textView);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        imageView = (ImageView) findViewById(R.id.ImageView01);
         editText = (EditText) findViewById(R.id.editText);
-
     }
 
     private String loadResponse(String searchText) throws ExecutionException, InterruptedException {
@@ -66,6 +63,8 @@ public class MainActivity extends ActionBarActivity {
     public void onClick(View view) throws InterruptedException, ExecutionException {
         Context context = getApplicationContext();
 
+        textView.setText("not load");
+
         progressBar.setProgress(0);
         progressBar.setProgress(50);
 
@@ -78,9 +77,9 @@ public class MainActivity extends ActionBarActivity {
 
         Response data = gsonData.fromJson(search, Response.class);
 
-        Picasso.with(context)
-                .load(data.getPhotos().getPhoto().get(0).imageUrl())
-                .into(imageView);
+//        Picasso.with(context)
+//                .load(data.getPhotos().getPhoto().get(0).imageUrl())
+//                .into(imageView);
 
         textView.setText("load");
 
