@@ -6,7 +6,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,8 +16,6 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 
@@ -25,8 +25,9 @@ public class MainActivity extends ActionBarActivity {
     private String myUrlPhoto;
     private ImageView imageView;
     private EditText editText;
-    private Gson gsonData = new Gson();
     public String search;
+    private Gson gsonData = new Gson();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,29 +37,16 @@ public class MainActivity extends ActionBarActivity {
         textView = (TextView) findViewById(R.id.textView);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         editText = (EditText) findViewById(R.id.editText);
+
+        GridView gridview = (GridView) findViewById(R.id.gridView);
+        gridview.setAdapter(new ImageAdapter(this));
+
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
-    private String loadResponse(String searchText) throws ExecutionException, InterruptedException {
-        HttpGetter httpGetter = new HttpGetter();
-        try {
-            URL url = new URL("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a931a15d733ce7b2294ccab06f5cfcd&text="+searchText+"&format=json&nojsoncallback=1");
-            httpGetter.execute(url);
-            String s = httpGetter.get();
-            // Log.w("s", s);
-        } catch (MalformedURLException e) {
-
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-
-            e.printStackTrace();
-        }
-
-        return httpGetter.get();
-    }
-
 
     public void onClick(View view) throws InterruptedException, ExecutionException {
         Context context = getApplicationContext();
@@ -69,17 +57,13 @@ public class MainActivity extends ActionBarActivity {
         progressBar.setProgress(50);
 
         if (editText.getText().toString().isEmpty()) {
-            search = loadResponse("bonbons");
+            search = ImageAdapter.loadResponse("bonbons");
         }
         else {
-            search = loadResponse(editText.getText().toString().replace(" ","%20"));
+            search = ImageAdapter.loadResponse(editText.getText().toString().replace(" ", "%20"));
         }
 
         Response data = gsonData.fromJson(search, Response.class);
-
-//        Picasso.with(context)
-//                .load(data.getPhotos().getPhoto().get(0).imageUrl())
-//                .into(imageView);
 
         textView.setText("load");
 
