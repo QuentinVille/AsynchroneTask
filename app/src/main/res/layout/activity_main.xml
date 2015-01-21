@@ -36,13 +36,21 @@
         android:layout_alignEnd="@+id/readWebpage"
         android:layout_margin="5dp" />
 
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@+id/progressBar"
+        android:layout_marginTop="15dp" />
+
     <Button
         android:id="@+id/readWebpage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:text="@string/loaderButton"
-        android:layout_below="@+id/progressBar"
+        android:layout_below="@+id/spinner"
         android:layout_alignParentStart="true"
         android:layout_margin="10dp">
     </Button>
@@ -58,5 +66,6 @@
         android:stretchMode="columnWidth"
         android:gravity="center"
         android:layout_below="@+id/readWebpage" />
+
 
 </RelativeLayout>

@@ -7,12 +7,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.gson.Gson;
+
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -25,11 +29,14 @@ import java.util.concurrent.ExecutionException;
 public class MainActivity extends ActionBarActivity {
     private TextView textView;
     private ProgressBar progressBar;
-    private GridView gridView;
     private EditText editText;
     private Gson gsonData;
     private List<Photo> data;
     private ImageAdapter imageAdapter;
+    private Spinner spinner;
+
+    private GridView gridView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +47,8 @@ public class MainActivity extends ActionBarActivity {
         textView = (TextView) findViewById(R.id.textView);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         editText = (EditText) findViewById(R.id.editText);
+        spinner = (Spinner) findViewById(R.id.spinner);
+
         gridView = (GridView) findViewById(R.id.gridView);
 
 //      Initialisation des varaibles
@@ -78,6 +87,19 @@ public class MainActivity extends ActionBarActivity {
                 return false;
             }
         });
+
+//////////////////////////////
+ArrayList<String> myStringArray;
+        myStringArray = new ArrayList<>();
+        myStringArray.add(0,"toto");
+        myStringArray.add(1,"titi");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,	myStringArray);
+        // Specify the layout to use when the list of choices appears
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+                spinner.setAdapter(adapter);
 
     }
 

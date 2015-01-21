@@ -27,6 +27,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.quentinville.com.asynchronetask.MainActivity" />
         </activity>
+        <activity
+            android:name=".GridActivity"
+            android:label="@string/title_activity_grid" >
+        </activity>
     </application>
 
 </manifest>
