@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener{
     private TextView textView;
     private ProgressBar progressBar;
     private EditText editText;
@@ -89,13 +89,12 @@ public class MainActivity extends ActionBarActivity {
         });
 
 //////////////////////////////
-ArrayList<String> myStringArray;
-        myStringArray = new ArrayList<>();
-        myStringArray.add(0,"toto");
-        myStringArray.add(1,"titi");
+        // On défitnit sur le spinner un Listener pour le click sur un des items
+        spinner.setOnItemSelectedListener(this);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,	myStringArray);
+        // Mise en place du spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.resolution, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -175,4 +174,16 @@ ArrayList<String> myStringArray;
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        Toast.makeText(MainActivity.this, "Ca :"+parent.getItemAtPosition(position)
+                , Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
