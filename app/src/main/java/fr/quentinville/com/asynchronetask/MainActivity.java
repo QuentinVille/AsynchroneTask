@@ -1,6 +1,5 @@
 package fr.quentinville.com.asynchronetask;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -13,9 +12,7 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
-
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -111,7 +108,7 @@ public class MainActivity extends ActionBarActivity {
         textView.setText("not load");
 
 //      Vérification du paramètre de recherche
-        String tag = "ski";
+        String tag = "warning";
 
 //      On vérifie ce qui est entré dans le champ de recherche
         if (!editText.getText().toString().isEmpty()) {
@@ -150,13 +147,8 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Context context = getApplicationContext();
-            CharSequence text = "Coucou :) !";
-            int duration = Toast.LENGTH_LONG;
-
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-            return true;
+            Toast.makeText(MainActivity.this, "Coucou :) !"
+                    , Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
     }

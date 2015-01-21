@@ -14,17 +14,28 @@ import com.squareup.picasso.Picasso;
 public class DetailView extends ActionBarActivity {
     private Context dContext;
     private ImageView imageView;
+    private String myUrl;
+    private String myTitle;
+    private String myOwner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
-
 //      Ajout des composants de l'interface
         imageView = (ImageView) findViewById(R.id.imageViewDetail);
+//      Récupération des informations de la photo
+        myUrl = getIntent().getExtras().getString("photoUrl");
+        myTitle = getIntent().getExtras().getString("photoTitle");
+        myOwner = getIntent().getExtras().getString("photoOwner");
+
+//      Remplacement du titre de l'activity par le nom de l'image
+        this.setTitle(myTitle);
+
 //      Affiche l'image sur laquelle on a cliqué dans la textView
         Picasso.with(dContext)
-                .load(getIntent().getExtras().getString("photoUrl"))
+                .load(myUrl)
                 .into(imageView);
     }
 
@@ -43,9 +54,6 @@ public class DetailView extends ActionBarActivity {
                 onBackPressed();
                 return true;
             case R.id.action_settings:
-                String myUrl = getIntent().getExtras().getString("photoUrl");
-                String myTitle = getIntent().getExtras().getString("photoTitle");
-                String myOwner = getIntent().getExtras().getString("photoOwner");
                 Toast.makeText(DetailView.this, "Title : " + myTitle + "\nOwner : " + myOwner + "\nUrl : " + myUrl
                         , Toast.LENGTH_LONG).show();
 
