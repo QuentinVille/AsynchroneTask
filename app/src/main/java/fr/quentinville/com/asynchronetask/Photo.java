@@ -115,6 +115,12 @@ public class Photo {
             return res;
             }
 
+    public String imageUrlResolution(String reso)
+    {
+        String res = "https://farm"+this.getFarm()+".staticflickr.com/"+this.getServer()+"/"+this.getId()+"_"+this.getSecret()+"_"+reso+".jpg";
+        return res;
+    }
+
 
     @Override
     public String toString() {

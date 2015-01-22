@@ -11,11 +11,11 @@
     <string name="title_activity_grid">GridActivity</string>
 
     <string-array name="resolution">
-        <item>200</item>
-        <item>300</item>
-        <item>400</item>
-        <item>500</item>
-        <item>600</item>
+        <item>m</item>
+        <item>s</item>
+        <item>t</item>
+        <item>z</item>
+        <item>b</item>
     </string-array>
 
 </resources>

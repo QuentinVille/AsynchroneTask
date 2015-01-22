@@ -28,6 +28,8 @@ public class GridActivity extends ActionBarActivity {
 
     private GridView gridView;
 
+    private String resolution;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,9 @@ public class GridActivity extends ActionBarActivity {
 
 //      Récupération des paramètre depuis l'activité appellante
         tag = getIntent().getExtras().getString("tag");
+        //Resolution
+        resolution = getIntent().getExtras().getString("resolution");
+
 //      Ajout des composants de l'interface
         gridView = (GridView) findViewById(R.id.gridView);
 
@@ -68,7 +73,7 @@ public class GridActivity extends ActionBarActivity {
                 Intent intent = new Intent(getBaseContext(), DetailView.class);
 
                 // On lui passe les paramètres de la photo
-                intent.putExtra("photoUrl",data.get(position).imageUrl());
+                intent.putExtra("photoUrl",data.get(position).imageUrlResolution(resolution)); //ici on met l'image avec la resoltuion
                 intent.putExtra("photoTitle",data.get(position).getTitle());
                 intent.putExtra("photoOwner",data.get(position).getOwner());
 

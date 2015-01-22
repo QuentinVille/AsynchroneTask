@@ -26,6 +26,8 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
     private Spinner spinner;
 
+    private String resolution;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +39,6 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         editText = (EditText) findViewById(R.id.editText);
         spinner = (Spinner) findViewById(R.id.spinner);
 
-
-
-//////////////////////////////
         // On défitnit sur le spinner un Listener pour le click sur un des items
         spinner.setOnItemSelectedListener(this);
 
@@ -57,7 +56,8 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         progressBar.setProgress(0);
         textView.setText("not load");
 
-//      Vérification du paramètre de recherche
+        progressBar.setProgress(25);
+//      Vérification du paramètre de recherche (par défaut je décide de mettre le tag #warning)
         String tag = "warning";
 
 //      On vérifie ce qui est entré dans le champ de recherche
@@ -68,16 +68,18 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
                 e.printStackTrace();
             }
         }
+        progressBar.setProgress(50);
 
-        // Appel de la nouvelle activity
+        // Appel de la nouvelle activity avec la gridView
         Intent intent = new Intent(getBaseContext(), GridActivity.class);
         // On lui passe les paramètres de la photo
         intent.putExtra("tag",tag);
+        //Les paramètre de résolution (on pourrait lui passer un Bundle peut-etre ??)
+        intent.putExtra("resolution",resolution);
+
 
         // On démarre la nouvelle activité
         startActivity(intent);
-
-        progressBar.setProgress(25);
 
         textView.setText("load");
 
@@ -100,7 +102,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Toast.makeText(MainActivity.this, "Coucou :) !"
+            Toast.makeText(MainActivity.this, "Coucou c'est DS :) !"
                     , Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
@@ -108,9 +110,17 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        Toast.makeText(MainActivity.this, "Ca :"+parent.getItemAtPosition(position)
-                , Toast.LENGTH_LONG).show();
+// Ce n'est pas cela
+//       String value = (String) (String) parent.getItemAtPosition(position);
+//        String para = "[x]+";
+//        String[] resolution = value.split(para);
+//        // il faudrait penser à la gestion des erreurs
+//        mResolution = resolution[0];
+//        sResolution = resolution[1];
+//        tResoltion = resolution[2];
+//        zResolution = resolution[3];
+//        bResolution = resolution[4];
+        resolution= (String) (String) parent.getItemAtPosition(position);
 
     }
 
