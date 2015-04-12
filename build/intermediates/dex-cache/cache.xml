@@ -9,18 +9,11 @@
         <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-8db3723dfe8f0b5804398600aa3ff26967741b4d.jar" />
     </item>
     <item
-        jar="/Users/quentin/.gradle/caches/modules-2/files-2.1/com.koushikdutta.ion/ion/2.0.5/49b5ebbf495380f27dd1986d0b5e5d86c18465a7/ion-2.0.5.jar"
+        jar="/Users/quentin/.gradle/caches/modules-2/files-2.1/org.scribe/scribe/1.3.7/583921bed46635d9f529ef5f14f7c9e83367bc6e/scribe-1.3.7.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="49b5ebbf495380f27dd1986d0b5e5d86c18465a7">
-        <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/ion-2.0.5-cdb05e9c83819f75453465d3766eba1f3415b02f.jar" />
-    </item>
-    <item
-        jar="/Users/quentin/.gradle/caches/modules-2/files-2.1/com.koushikdutta.async/androidasync/2.0.5/965d5fbe58feeb131f0f5bfa26657b593db83359/androidasync-2.0.5.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="965d5fbe58feeb131f0f5bfa26657b593db83359">
-        <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/androidasync-2.0.5-9729c4bada0df7af898ef5d4bc702ccb4569bb80.jar" />
+        sha1="583921bed46635d9f529ef5f14f7c9e83367bc6e">
+        <dex dex="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/pre-dexed/debug/scribe-1.3.7-0e63be8c242a9f673fffb466d2ae02e9ecf0b3be.jar" />
     </item>
     <item
         jar="/Users/quentin/Documents/dev_android/AsynchroneTask/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"

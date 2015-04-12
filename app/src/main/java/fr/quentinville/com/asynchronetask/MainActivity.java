@@ -14,8 +14,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.scribe.builder.ServiceBuilder;
+import org.scribe.builder.api.FlickrApi;
+import org.scribe.model.Token;
+import org.scribe.model.Verifier;
+import org.scribe.oauth.OAuthService;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 
 
@@ -23,6 +30,16 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     private TextView textView;
     private ProgressBar progressBar;
     private EditText editText;
+
+    // Elements pour l'authentification
+    private MyPreferenceManager myPref;
+    private Token token;
+    private static final String PROTECTED_RESOURCE_URL = "https://api.flickr.com/services/rest/";
+    private String apiKey = "6a931a15d733ce7b2294ccab06f5cfcd";
+    private String apiSecret = "de20dfb6eb67f73f";
+    private OAuthService service = new ServiceBuilder().provider(FlickrApi.class).apiKey(apiKey).apiSecret(apiSecret).build();
+    private Token requestToken, accessToken;
+    private Verifier verifier;
 
     private Spinner spinner;
 
@@ -32,6 +49,27 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        // On ajout les données de l'utilisateur dans l'application
+//        SharedPreferences prefs = this.getSharedPreferences(
+//                "fr.quentinville.com.asynchronetask", Context.MODE_PRIVATE);
+//        // On fait l'appel dans les préférences voir si les données existe déjà
+//        myPref = MyPreferenceManager.MyPreferencesManager(prefs);
+//        // si il y en a pas on créé le jeton de connexion à l'aide de l'api scribe.org OAuth
+//        if (myPref.getToken() == null && myPref.getSecret() == null && myPref.getRawResponse() == null) {
+//            myPref = MyPreferenceManager.setMyPreferencesValues(prefs, myPref.getToken(), myPref.getSecret(), myPref.getRawResponse());
+//        }
+//
+//        // Du coup dans la variable myPref les données de l'access token sont présente et il est ainsi possible de faire des appels à l'api flickr avec ce jeton.
+
+
+//        requestToken = FlickrAccess.getRequestToken(service);
+//        FlickrAccess.getAuthorizationUrl(service,requestToken);
+//        FlickrAccess.getAcessToken(service, requestToken, verifier);
+//        FlickrAccess.getRawResponse(accessToken);
+//        // Requête pour récupérer les informations d'un utilisateur
+//        org.scribe.model.Response query = FlickrAccess.getUserInfos(service, PROTECTED_RESOURCE_URL, accessToken);
+//        System.out.println(query.getBody());
 
 //      Ajout des composants de l'interface
         textView = (TextView) findViewById(R.id.textView);
@@ -95,6 +133,23 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        Scanner in = new Scanner(System.in);
+
+        requestToken = FlickrAccess.getRequestToken(service);
+        FlickrAccess.getAuthorizationUrl(service,requestToken);
+        System.out.println("And paste the verifier here");
+        System.out.print(">>");
+        Verifier verifier = new Verifier(in.nextLine());
+
+        accessToken = FlickrAccess.getAcessToken(service, requestToken, verifier);
+
+        System.out.println(FlickrAccess.getRawResponse(accessToken));
+
+        // Requête pour récupérer les informations d'un utilisateur
+        org.scribe.model.Response query = FlickrAccess.getUserInfos(service, PROTECTED_RESOURCE_URL, accessToken);
+        System.out.println(query.getBody());
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -102,7 +157,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Toast.makeText(MainActivity.this, "Coucou c'est DS :) !"
+            Toast.makeText(MainActivity.this, FlickrAccess.getRawResponse(accessToken)
                     , Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
